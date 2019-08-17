@@ -1,0 +1,165 @@
+/* General Rules */
+*{
+  margin: 0 auto;
+  padding: 0;
+}
+body{
+  background: #ccc;
+  height: 4000px;
+}
+
+.fullHieght{
+  height: 100vh !important;
+}
+.noticed li{
+  list-style: none;
+}
+.noticed li a{
+  text-decoration: none !important;
+}
+
+/* skip UIKIT Frame-work rules */
+.uk-card-default .uk-card-title{
+  padding: 8px;
+  color: #fff;
+}
+.uk-navbar{
+  background: #1a0a4c;
+  margin-bottom: 1em;
+}
+.uk-accordion-title{
+  text-align: center;
+  padding: .1em;
+  cursor: pointer;
+  background: #1a0a4c;
+  font-size: 19px !important;
+  letter-spacing: 1px;
+  margin: 0;
+  color: #dddddd
+}
+.uk-accordion-title:hover{
+  color: #fff;
+}
+.uk-accordion-content {
+    margin: auto !important;
+    text-align: center;
+    padding-left: .5em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+
+}
+.uk-navbar-nav li a{
+  color: #ddd !important;
+  letter-spacing:4px;
+  font-size: 19px;
+}
+.uk-navbar-nav li a svg{
+  padding-right: 15px !important;
+}
+.uk-accordion-content div a{
+  color: #1a0a4c;
+  text-decoration: none;
+}
+.uk-accordion-content div a:hover{
+  color: #666;
+}
+.uk-table th,
+.uk-table td{
+  text-align: center;
+  vertical-align: middle;
+}
+.uk-card-default{
+  background: #ddd;
+}
+
+.uk-card-body{
+  background: #fff;
+}
+/* End Skip */
+/* Frame-Work */
+.posts-tit{
+  margin-top: 1em !important;
+  margin: auto;
+}
+.MainColor{
+  color: #1a0a4c !important;
+}
+.MainBack{
+  background-color: #1a0a4c !important;
+}
+.otherBackground{
+}
+.border_left_ccc{
+  border-left: 2px dotted #ccc;
+}
+
+.active::before{
+  content: '';
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 5px 0px 5px 5px;
+  border-color: transparent transparent transparent #222;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 7px;
+  margin-bottom: 3px;
+}
+.active{
+  color: #222 !important;
+}
+/* End Frame-Work */
+
+
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1a0a4c;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* background: #444; */
+}
+/* End scroll bar */
+
+.media{
+  background-color: #dddddd;
+  justify-content: space-around;
+  padding: 0.5em !important;
+}
+.media div a,
+.uk-totop {
+  color: #1a0a4c !important;
+}
+
+/* Sidebar */
+.sidebar_main{
+  overflow: scroll;
+  /* border-right: 1px solid rgba(8, 107, 129, 0.5); */
+  margin: 0;
+  background: #ddd;
+}
+.sidebar_main li{
+  margin: 0 !important;
+}
+/* End sidebar */
+
+.latest .toggle-info {
+	color: #999;
+	cursor: pointer
+}
+
+.latest .toggle-info:hover {
+	color: #444;
+}
