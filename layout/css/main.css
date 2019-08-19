@@ -121,7 +121,6 @@ body{
 
 .uk-card-body{
   padding: 25px;
-  height: 200px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -586,3 +585,6 @@ color:#fff;
 }
 
 /* Footer Main */
+.activePag{
+  background: #ccc;
+}
