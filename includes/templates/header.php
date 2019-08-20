@@ -8,6 +8,7 @@
     <title>
       <?php getTitle(); ?>
     </title>
+
     <?php
     on_styles('uikit.min');
     on_scripts('all.min');
@@ -156,14 +157,3 @@
           <?php } ?>
             <!-- end nav two -->
     </header>
-
-    <?php
-    $dod = str_replace( ' ', '-',$top_nav_cat[3]['Name']);
-
-    $zoz = $_GET['page_title'];
-
-
-     echo $dod;
-     echo "<br>";
-     echo $zoz;
-     ?>

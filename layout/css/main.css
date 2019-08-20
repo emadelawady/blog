@@ -121,7 +121,6 @@ body{
 
 .uk-card-body{
   padding: 25px;
-  height: 200px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -321,8 +320,8 @@ font-size: 26px;
 /* Start Footer */
 
 .hold_footer{
-  padding: 2em;
-  background: #1a0a4c;
+  padding: 1.5em;
+  background: #f0506e;
   margin-top: 2em;
 }
 h1,
@@ -379,21 +378,30 @@ h1,
 @media only screen and (max-width:768px) {
 .single_footer{margin-bottom:30px;}
 }
+
 .single_footer h4 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   color: #fff;
   margin-top: 0;
-  margin-bottom: 25px;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 14px;
 }
-.single_footer h4::after {
-  content: "";
-  display: block;
-  height: 2px;
-  width: 40px;
-  background: #fff;
-  margin-top: 20px;
+
+.single_footer h4:before,
+.single_footer h4:after {
+    content: '';
+    border-top: 2px solid #ccc;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+.single_footer h4:after {
+    margin: 0 0 0 20px;
 }
 .single_footer p{color:#fff;}
 .single_footer ul {
@@ -401,16 +409,24 @@ h1,
   padding: 0;
   list-style: none;
 }
-.single_footer ul li{}
+.single_footer ul li{
+  padding: 0;
+  text-align: center;
+  background: #ccc;
+  border: 1px solid #f0506e;
+}
 .single_footer ul li a {
-  color: #fff;
+  color: #f0506e;
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
   line-height: 36px;
   font-size: 15px;
   text-transform: capitalize;
 }
-.single_footer ul li a:hover { color: #ff3666; }
+.single_footer ul li a:hover {
+  color: #ff3666;
+  font-weight: 900;
+ }
 
 .single_footer_address{}
 .single_footer_address ul{}
@@ -428,40 +444,39 @@ h1,
 
 /*START NEWSLETTER CSS*/
 .subscribe {
-  display: block;
-  position: relative;
-  margin-top: 15px;
-  width: 100%;
+}
+
+.signup_form{
+  border-bottom: 2px solid #ccc;
 }
 .subscribe__input {
-  border: medium none;
-  color: #333;
-  display: block;
-  font-weight: 500;
-  height: 60px;
+  height: 40px;
   letter-spacing: 0.4px;
   margin: 0 auto;
   text-align: center;
   text-transform: capitalize;
-  width: 100%;
-
+  width: 75%;
+  background: none;
+  border: none;
+  color: #fff;
 }
 @media only screen and (max-width:768px) {
 .subscribe__input{padding: 0 50px 0 20px;}
 }
 
 .subscribe__btn {
-background-color: transparent;
-border-radius: 0 25px 25px 0;
-color: #01c7e9;
-cursor: pointer;
-display: block;
-font-size: 20px;
-height: 60px;
-position: absolute;
-right: 0;
-top: 0;
-width: 60px;
+  background-color: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  width: 20%
+}
+
+.subscribe__input::placeholder{
+  color: #ccc;
+}
+.subscribe__input:focus{
+  outline: none;
+  border-top: 1px solid #ccc;
 }
 .subscribe__btn i{transition: all 0.3s ease 0s;}
 @media only screen and (max-width:768px) {
@@ -481,11 +496,17 @@ button {
 /*END NEWSLETTER CSS*/
 
 /*START SOCIAL PROFILE CSS*/
-.social_profile {margin-top:40px;}
-.social_profile ul{
-list-style: outside none none;
-margin: 0;
-padding: 0;
+.social_profile {
+  padding: 0;
+}
+
+.social_profile ul {
+  list-style: outside none none;
+    width: 100%;
+    display: flex;
+    margin-top: 3em;
+    background: #dc415e;
+    padding: 9px;
 }
 .social_profile ul li{float:left;}
 .social_profile ul li a {
@@ -494,14 +515,13 @@ padding: 0;
   text-transform: uppercase;
   transition: all 0.3s ease 0s;
   margin: 0px 5px;
-  font-size: 18px;
-  color: #fff;
+  font-size: 40px;
+  color: #ccc;
   border-radius: 30px;
   width: 50px;
   height: 50px;
   line-height: 50px;
   display: block;
-  border: 1px solid rgba(255,255,255,0.2);
 }
 @media only screen and (max-width:768px) {
 .social_profile ul li a{margin-right:10px;margin-bottom:10px;}
@@ -514,20 +534,16 @@ padding: 0;
 }
 }
 .social_profile ul li a:hover{
-background:#ff3666;
-border: 1px solid #ff3666;
 color:#fff;
-border:0px;
 }
 /*END SOCIAL PROFILE CSS*/
 .copyright {
-  color:#fff;
-  font-size: 15px;
-  border-top: 1px solid rgba(255,255,255,0.4);
-  text-align: center;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
-.copyright a{color:#01c7e9;transition: all 0.2s ease 0s;}
-.copyright a:hover{color:#ff3666;}
+.copyright a{color:#fff;transition: all 0.2s ease 0s;}
+.copyright a:hover{color:#FFEB3B;}
 /* End Footer */
 
 
@@ -548,3 +564,27 @@ border:0px;
   color: #1a0a4c;
 }
 /* End Categories Page */
+
+/* Footer Main */
+.hold_latest{
+  display: flex;
+}
+
+.hold_latest ._latest_posts{
+  width: 100%;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 4px solid #f0506e;
+}
+
+._latest_posts div{
+  display: flex;
+  align-items: center;
+}
+
+/* Footer Main */
+.activePag{
+  background: #ccc;
+}
