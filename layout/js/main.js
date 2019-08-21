@@ -1,12 +1,6 @@
 $(function () {
   'user strict';
 
-  $('.login-page h2 span').click(function () {
-    $(this).addClass('selected').siblings().removeClass('selected');
-    $('.login-page form').hide();
-
-    $('.' + $(this).data('class')).fadeIn(100);
-  });
 
 
     // $('.live-title').keyup(function (){

@@ -1,11 +1,7 @@
 <?php
 class Pagination{
 		private $db, $table, $total_records;
-<<<<<<< HEAD
 		public $start= 0,$limit = 9;
-=======
-		public $start= 0,$limit = 9]\;
->>>>>>> 2dc12fa6f4df6c3cde9299f64cb282b84769f768
 		//PDO connection
 		public function __construct($table){
 				$this->table = $table;

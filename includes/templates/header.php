@@ -27,7 +27,7 @@
           <!-- Start LEFT nav ONE -->
           <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
-              <li>
+              <li class="list_home">
                 <a href="index.php">
                   <i class="fas fa-home fa-1x"></i> Home Page
                 </a>
@@ -39,24 +39,24 @@
           <!-- Start RIGHT nav ONE -->
           <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
-              <li>
+              <li class="list_homepage">
                 <a href="admin/index.php">
                   <i class="fas fa-tachometer-alt fa-1x"></i>
                 </a>
               </li>
-              <li class="<?php if(isset($current_page) && $current_page == 'add-post.php') { echo " active_upper "; } ?>">
+              <li class="list_homepage <?php if(isset($current_page) && $current_page == 'add-post.php') { echo " active_upper "; } ?>">
                 <a href="add-post.php" class="">
                   <i class="fas fa-edit fa-1x"></i>
                   <?php if($current_page == 'add-post.php') { echo "<span class='uk-text-success'> Add Post</span>"; } ?>
                 </a>
               </li>
-              <li class="<?php if(isset($current_page) && $current_page == 'profile.php') { echo " active_upper "; } ?>">
+              <li class="list_homepage <?php if(isset($current_page) && $current_page == 'profile.php') { echo " active_upper "; } ?>">
                 <a href="profile.php">
                   <i class="fas fa-user fa-1x"></i>
                   <?php if($current_page == 'profile.php') { echo "<span class='uk-text-success'> Profile</span>"; } ?>
                 </a>
               </li>
-              <li>
+              <li class="list_homepage">
                 <a href="logout.php">
                   <i class="fas fa-sign-out-alt fa-1x"></i>
                 </a>
@@ -75,7 +75,7 @@
               foreach ($top_nav_cat as $cat) {
                  ?>
 
-                <li class="uk-padding-remove <?php if(isset($_GET['page_title']) && $_GET['page_title'] == $cat['Name']) { echo "acitveTwo";} ?>">
+                <li class="list_nav uk-padding-remove <?php if(isset($_GET['page_title']) && $_GET['page_title'] == $cat['Name']) { echo "acitveTwo";} ?>">
                    <?php
                   echo "<a href='categories.php?pageid=".$cat['ID']."&page_title=".str_replace(' ', '-', $cat['Name'])."'>";
                     echo $cat['Name'];
@@ -101,7 +101,7 @@
           <nav class="uk-navbar uk-width-1-1 uk-margin-remove">
             <div class="uk-navbar-left">
               <ul class="uk-navbar-nav">
-                <li>
+                <li class="list_home">
                   <a href="index.php">
                     <i class="fas fa-home fa-1x"></i> Home Page
                   </a>
@@ -119,18 +119,11 @@
                 $top_nav_cat = get_all_rec('*', 'categories', 'parent = 0', 'ID DESC', 4);
 
                   foreach ($top_nav_cat as $cat) {
-
                     $dod = str_replace( ' ', '-', $cat['Name']);
-
-                    $zoz = $_GET['page_title'];
-
-
-                    echo $dod;
-                    echo $zoz;
-
+                    $zoz = isset($_GET['page_title']) ? $_GET['page_title'] : "";
                      ?>
 
-                    <li class="uk-padding-remove <?php if(isset($zoz) &&$zoz == $dod) {
+                    <li class="list_nav uk-padding-remove <?php if(isset($zoz) &&$zoz == $dod) {
                       echo "acitveTwo";}  ?>">
                        <?php
                       echo "<a href='categories.php?pageid=".$cat['ID']."&page_title=".str_replace(' ', '-', $cat['Name'])."'>";

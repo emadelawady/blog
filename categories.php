@@ -35,21 +35,21 @@ $hook_up->inc_header(); ?>
       foreach ($posts as $post) { ?>
       <div class="uk-padding-small uk-width-1-1@s uk-width-1-3@m uk-width-1-3@l">
 
-        <div class="cat-posts uk-border-rounded" style="background-image: url(<?php echo empty($post->Image) ? 'admin/uploads/posts/user.jpg' : 'admin/uploads/posts/' . $post->Image;?>)">
+        <div class="cat-posts uk-border-rounded uk-inline-clip uk-transition-toggle" style="background-image: url(<?php echo empty($post->Image) ? 'admin/uploads/posts/user.jpg' : 'admin/uploads/posts/' . $post->Image;?>)">
           <div class="uk-overlay-primary uk-border-rounded">
-            <div class="uk-card-header">
-              <h3 class="uk-text-capitalize">
+            <div class="uk-card-header uk-transition-scale-up">
+              <h3 class="post_title uk-text-capitalize">
                   <a id="<?php echo $post->Post_ID; ?>" href="posts.php?postid=<?php echo $post->Post_ID; ?>" class="checkActive">
                   <?php echo excerpt_len($post->Name); ?>
                 </a>
                   </h3>
             </div>
-            <div class="uk-card-body">
+            <div class="uk-card-body uk-transition-slide-bottom">
                 <p>
                   <?php echo excerpt_len($post->Description,50, true); ?>
                 </p>
             </div>
-            <div class="uk-card-footer uk-margin-remove" uk-grid>
+            <div class="uk-card-footer uk-margin-remove uk-transition-scale-down" uk-grid>
               <div class="uk-width-1-2">
                 <a href="posts.php?postid=<?php echo $post->Post_ID; ?>" class="uk-label-success">Read more</a>
               </div>
@@ -72,7 +72,8 @@ $hook_up->inc_header(); ?>
 
   </div>
 
-
+<div class="cat_pagi">
+  <ul class="uk-pagination">
 <?php
     $pages  = $pagination->get_pagination_number('posts');
     $count = ceil($pages[0]['count'] / $pagination->limit);
@@ -81,13 +82,14 @@ $hook_up->inc_header(); ?>
 
 
    for($i = 1; $i<=$count; $i++){ ?>
-     <span class="<?php echo $i == $curr ? "activePag" : ""; ?>">
+     <li class="<?php echo $i == $curr ? "activePag" : ""; ?>">
 
         <a href="categories.php?pageid=<?php echo $_GET['pageid']; ?>&page_title=<?php echo $_GET['page_title']; ?>&page=<? echo $i;?>">
           <?php echo $i; ?>
         </a>
-        </span>
+      </li>
 <?php } ?>
-
+  </ul>
+</div>
 
   <?php $hook_up->inc_footer('main', '-') ?>
