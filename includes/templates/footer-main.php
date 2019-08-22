@@ -33,7 +33,7 @@
 
                 <div class="uk-inline-clip uk-transition-toggle uk-light _latest_posts" style="background-image: url('admin/uploads/posts/<?php echo $latest['Image']; ?>')" tabindex="0">
                   <div class="uk-overlay-primary uk-height-1-1">
-                    <span class="uk-transition-fade uk-margin-auto" uk-icon="icon: plus; ratio: 2">
+                    <span class="uk-transition-slide-bottom-small uk-margin-auto" uk-icon="icon: plus; ratio: 2">
                   <a class="dod" href="posts.php?postid=<?php echo $latest['Post_ID']; ?>"><?php echo $latest['Name']; ?></a>
                 </span>
 

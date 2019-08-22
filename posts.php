@@ -50,58 +50,67 @@ $hook_up->inc_header();
 
 				?>
   <main class="uk-margin-remove uk-container">
-    <div class="uk-text-center uk-margin-auto uk-height-max-large" uk-grid>
+    <div class="uk-text-center uk-margin-auto" uk-grid>
       <div class="uk-width-3-4">
         <div class="uk-width-1-1 uk-margin-top">
           <div class="uk-block">
-            <h1 class="uk-margin-top">
+            <h1 class="post_title">
 								<?php echo $posts['Name']; ?>
 								</h1>
           </div>
+					<div class="uk-block">
+						<h1 class="uk-margin-top uk-text-left">
+							<!-- <img class="post_img" src="admin/uploads/posts/<?php // echo $posts['Image']; ?>" alt=""> -->
+
+								<div class="post_img" style="background-image: url('admin/uploads/posts/<?php echo $posts['Image']; ?>');">
+									<div>
+								</h1>
+					</div>
           <div class="uk-block">
             <p class="post-content">
               <?php	echo $posts['Description']; ?>
             </p>
           </div>
         </div>
-        <div class="uk-width-1-2">
-          <p class="uk-alert-success">
-            <?php
-							if ($posts['Status'] == 1) {
-								echo "Published";
-							} else{
-								echo "Drafted";
-							} ?>
-          </p>
-          <p class="uk-alert-success uk-block">
-            <?php echo 'Rating : ' . $posts['Rating']; ?>
-          </p>
-        </div>
-        <div class="uk-width-1-2">
-          <?php
-							echo $posts['cat_name'] . '<br>';
-
-							echo 'by ' . $posts['Username'] . '<br>';
-							 ?>
-        </div>
-				<div class="uk-width-1-1">
+				<div class="uk-width-1-1 uk-margin-top" uk-grid>
+					<div class="uk-width-1-2">
+	          <p class="post_info">
+	            <?php
+								if ($posts['Status'] == 1) {
+									echo "Published";
+								} else{
+									echo "Drafted";
+								} ?> in
+								<span>
+									<?php echo $posts['cat_name']; ?>
+								</span> by
+								<span>
+									<?php echo $posts['Username']; ?>
+								</span>
+								<span>
+								<?php echo date("M Y", strtotime($posts['Add_Date']));?>
+							</span>
+	          </p>
+	        </div>
+					<div class="uk-width-1-2">
+						<p class="post_rating">
+							<?php echo 'Rating : <span>' . $posts['Rating'] . ' <i class="fas fa-star" ></i></span>'; ?>
+						</p>
+					</div>
+				</div>
+				<div class="uk-width-1-1 tags">
 					<?php
 					$post_tags = explode(',', $posts['tags']);
-					echo 'Tags : - ';
+					echo 'Tags :  ';
 					foreach ($post_tags as $tag) {
 						$tag = str_replace(' ', '', $tag);
 						$tag = strtolower($tag);
-						echo '( <a href="tags.php?tags='.$tag.'">' . $tag . '</a>)';
+						echo '<a href="tags.php?tags='.$tag.'">' . $tag .'</a>' . ' / ';
 					}
-					echo " - ";
 							 ?>
 				</div>
-        <div class="uk-width-1-1">
-          <?php
-							echo $posts['Add_Date'];?>
-        </div>
       </div>
-      <div class="uk-width-1-4 uk-text-center uk-background-secondary">
+      <div class="uk-width-1-4">
         <?php include $templates . 'sidebar-post.php'; ?>
       </div>
     </div>

@@ -22,13 +22,14 @@ $comments = $stmt->fetchAll();
 
 
 ?>
+<div class="hold_comment">
 <?php foreach ($comments as $comment) { ?>
 
-<ul class="uk-comment-list uk-background-secondary">
+<ul class="uk-comment-list">
 	<li>
 			<article class="uk-comment uk-visible-toggle" tabindex="-1">
 					<header class="uk-comment-header uk-position-relative">
-							<div class="uk-grid-medium uk-flex-middle" uk-grid>
+							<div class="uk-grid-medium uk-flex-middle hold_comment_box" uk-grid>
 									<div class="uk-width-auto">
 											<img class="uk-comment-avatar" src="avatar.jpg" width="80" height="80" alt="">
 									</div>
@@ -46,3 +47,4 @@ $comments = $stmt->fetchAll();
 	</li>
 </ul>
 <?php } ?>
+</div>

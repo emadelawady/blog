@@ -13,7 +13,6 @@ $hook_up->inc_header(); ?>
   require_once 'pagination-class.php';
   $pagination =  new Pagination('posts');
   $posts = $pagination->get_data();
-
 ?>
   <div class="cat_title" uk-grid>
     <div class="uk-width-1-1">
@@ -24,6 +23,22 @@ $hook_up->inc_header(); ?>
       echo "# Dude just be nice and pick up a category from top menu";
     } ?>
   </h1>
+  <ul cless="child_cat">
+  <?php
+  $top_nav_cat = get_all_rec('*', 'categories', 'parent = 0', 'ID DESC', 4);
+    foreach ($top_nav_cat as $cat) {
+  $down_nav_cat = get_all_rec("*", "categories", "parent = {$cat['ID']}", "ID DESC", 5);
+  foreach ($down_nav_cat as $down) { ?>
+  <li>
+    <?php
+    echo "<a href='categories.php?pageid=".$down['ID']."&page_title=".str_replace(' ', '-', $down['Name'])."'>";
+      echo $down['Name'];
+    echo "</a>"; ?>
+  </li>
+<?php } ?>
+<?php } ?>
+</ul>
+
   </div>
   </div>
   <div id="post_ajax" class="uk-container categories uk-margin-auto" uk-grid>
@@ -38,7 +53,7 @@ $hook_up->inc_header(); ?>
         <div class="cat-posts uk-border-rounded uk-inline-clip uk-transition-toggle" style="background-image: url(<?php echo empty($post->Image) ? 'admin/uploads/posts/user.jpg' : 'admin/uploads/posts/' . $post->Image;?>)">
           <div class="uk-overlay-primary uk-border-rounded">
             <div class="uk-card-header uk-transition-scale-up">
-              <h3 class="post_title uk-text-capitalize">
+              <h3 class="post_title_cat uk-text-capitalize">
                   <a id="<?php echo $post->Post_ID; ?>" href="posts.php?postid=<?php echo $post->Post_ID; ?>" class="checkActive">
                   <?php echo excerpt_len($post->Name); ?>
                 </a>

@@ -1,20 +1,20 @@
 <!-- Start Comment Box -->
-<div class="uk-container MainBack">
-	<h3>Add Comment</h3>
-	<!-- comment box after inserting data -->
-	<?php  include $templates . 'comments/comment-box.php'; ?>
+<div class="uk-container uk-padding">
+	<div class="hold_comment">
+
+	<h3 class="uk-text-center add_comment">Add Comment</h3>
 
 	<?php if(isset($_SESSION['user'])) { ?>
 
 	<form class="uk-form" action="<?php echo $_SERVER['PHP_SELF'] . '?postid=' . $posts['Post_ID']; ?>" method="POST">
 		<div class="uk-form-row">
-			<label class="uk-form-label" for="comment">comment :</label>
-			<div class="uk-form-controls">
-				<textarea type="text" id="comment" class="uk-textarea " name="comment" placeholder=""></textarea>
-				<button type="submit" class="uk-button">Add Comment</button>
+			<div class="uk-form-controls uk-text-center">
+				<textarea type="text" id="comment" class="uk-textarea " name="comment" placeholder="Write a Comment"></textarea>
+				<button type="submit" class="uk-button">Add</button>
 			</div>
 		</div>
 	</form>
+</div>
 	<?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		// get variables
@@ -40,5 +40,7 @@
 } else{
 	echo "Must Login Or Register for Adding Comment";
 } ?>
+<!-- comment box after inserting data -->
+<?php  include $templates . 'comments/comment-box.php'; ?>
 </div>
 <!-- End Comment Box -->
