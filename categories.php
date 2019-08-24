@@ -25,18 +25,20 @@ $hook_up->inc_header(); ?>
   </h1>
   <ul cless="child_cat">
   <?php
-  $top_nav_cat = get_all_rec('*', 'categories', 'parent = 0', 'ID DESC', 4);
-    foreach ($top_nav_cat as $cat) {
-  $down_nav_cat = get_all_rec("*", "categories", "parent = {$cat['ID']}", "ID DESC", 5);
-  foreach ($down_nav_cat as $down) { ?>
+
+
+  $down_nav_cat = get_all_rec("*", "sub_categories", "", "id_sub DESC", 4);
+
+  foreach ($down_nav_cat as $down) {
+    if ($_GET['pageid'] == $down['category_id'] ) { ?>
   <li>
     <?php
-    echo "<a href='categories.php?pageid=".$down['ID']."&page_title=".str_replace(' ', '-', $down['Name'])."'>";
-      echo $down['Name'];
+    echo "<a href='categories.php?pageid=".$down['id_sub']."&page_title=".str_replace(' ', '-', $down['name_sub'])."'>";
+      echo $down['name_sub'];
     echo "</a>"; ?>
   </li>
-<?php } ?>
-<?php } ?>
+<?php   }
+} ?>
 </ul>
 
   </div>

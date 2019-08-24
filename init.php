@@ -15,6 +15,8 @@ if (isset($_SESSION['user'])) {
 $includes = 'includes/';
 $functions = 'includes/functions/';
 $templates = 'includes/templates/';
+$components = 'includes/components/';
+
 $css = 'layout/css/';
 $js = 'layout/js/';
 

@@ -30,7 +30,9 @@ body{
 /* End Header */
 
 /* skip UIKIT Frame-work rules */
-
+.uk-card-header{
+  padding: 9px;
+}
 .uk-pagination>*>:focus, .uk-pagination>*>:hover{
   color: #fff !important;
 }
@@ -138,16 +140,10 @@ body{
   text-align: center;
 }
 
-.uk-card-body{
-  padding: 25px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .hp_post{
   background-position: center;
   background-repeat: no-repeat;
+  padding: 0;
 }
 /* End Skip */
 /* Frame-Work */
@@ -468,7 +464,6 @@ h1,
   align-items: center;
   text-align: center;
   color: #f0506e;
-  margin-top: 0;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 14px;
@@ -623,15 +618,33 @@ color:#fff;
 .copyright a:hover{color:#FFEB3B;}
 /* End Footer */
 
+.home_title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #2e0080;
+  font-weight: 900;
+}
 
+
+.home_title:after {
+  content: '';
+  border-top: 1px solid rgba(240, 80, 110, 0.3);
+  margin: 3px 20px 0px 10px;
+  flex: 1 0 20px;
+}
 /* Start Categories Page */
 .categories{
 
 }
 .cat-posts {
+  width: 100%;
   padding: 0;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
 }
 .cat_title{
 
@@ -831,3 +844,19 @@ text-transform: capitalize;
     border-color: #f0506e;
 }
 /* Post Page Tags */
+
+/*  Home Page  */
+.top_commented{
+  color: #ffffff;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 15px;
+  text-align: left;
+}
+/* End Home Page */
+
+h3.post_title_cat a {
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 700;
+}

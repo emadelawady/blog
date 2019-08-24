@@ -2,7 +2,6 @@ $(function () {
   'user strict';
 
 
-
     // $('.live-title').keyup(function (){
     //   $('.live-preview .captionone h3').text($(this).val());
     // });
