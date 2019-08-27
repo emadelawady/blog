@@ -20,8 +20,7 @@ $stmt->execute(array($posts['Post_ID']));
 
 $comments = $stmt->fetchAll();
 
-
-?>
+if (!empty($comments)) { ?>
 <div class="hold_comment">
 <?php foreach ($comments as $comment) { ?>
 
@@ -48,3 +47,4 @@ $comments = $stmt->fetchAll();
 </ul>
 <?php } ?>
 </div>
+<?php } ?>

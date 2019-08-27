@@ -1,5 +1,4 @@
-<?php global $user_info, $session_user, $current_page; // Global Vars ?>
-
+<?php global $con, $user_info, $session_user, $current_page; // Global Vars ?>
   <!DOCTYPE html>
   <html lang="en" dir="ltr">
 
@@ -8,6 +7,8 @@
     <title>
       <?php getTitle(); ?>
     </title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+
     <?php
     on_styles('uikit.min');
     on_scripts('all.min');
@@ -39,15 +40,15 @@
           <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
               <li class="<?php if(isset($current_page) && $current_page == 'add-post.php') { echo " active_upper "; } ?>">
-                <a href="add-post.php" class="">
+                <a href="add-post.php" class="a_header">
                   <i class="fas fa-edit fa-1x"></i>
-                  <?php if($current_page == 'add-post.php') { echo "<span class='uk-text-success'> Add Post</span>"; } ?>
+                  <?php if($current_page == 'add-post.php') { echo "<span class=''> Add Post</span>"; } ?>
                 </a>
               </li>
               <li class="<?php if(isset($current_page) && $current_page == 'profile.php') { echo " active_upper "; } ?>">
                 <a href="profile.php">
                   <i class="fas fa-user fa-1x"></i>
-                  <?php if($current_page == 'profile.php') { echo "<span class='uk-text-success'> Profile</span>"; } ?>
+                  <?php if($current_page == 'profile.php') { echo "<span class=''> Profile</span>"; } ?>
                 </a>
               </li>
               <li>
@@ -61,31 +62,27 @@
         </nav>
         <!-- end nav one -->
         <!-- Start nav two  -->
-        <nav class="uk-navbar uk-width-1-1 uk-margin-remove sec_background uk-padding-small" uk-navbar>
+        <nav class="uk-navbar uk-width-1-1 uk-margin-remove down_nav" uk-navbar>
           <ul class="uk-navbar-nav uk-width-1-1 uk-text-center" uk-grid>
-            <!-- Left -->
-            <li>
-              <a>
-                <span class="profile_img">
-                <img width="100px" src="admin/uploads/avatars/<?php echo $user_info['avatar']; ?>" alt="">
-                </span>
-                <span class="uk-text-capitalize">username: <?php echo $user_info['Username']; ?> </span>
-              </a>
-            </li>
             <!-- Right -->
-            <li>
+            <li class="profile_email">
               <a>
-                <span class="uk-label">Email</span>
-                <span class="uk-alert-primary"><?php echo $user_info['Email']; ?></span>
+                <span class="uk-text-capitalize">username: <?php echo $_SESSION['user']; ?> </span>
               </a>
             </li>
-            <li>
+            <li class="profile_email">
               <a>
-                <span class="uk-label">Status</span>
+                <span class="">Email</span>
+                <span class=""><?php echo $user_info['Email']; ?></span>
+              </a>
+            </li>
+            <li class="profile_email">
+              <a>
+                <span class="">Status</span>
                 <?php if ($user_info['RegStatus'] == 1) {
-                  echo "<span class='uk-alert-primary'>Activated</span>";
+                  echo "<span class=''>Activated</span>";
                 } else{
-                  echo "<span class='uk-alert-danger'>Not Activated</span>";
+                  echo "<span class='uk-label-danger'>Not Activated</span>";
 
                 }?>
               </a>

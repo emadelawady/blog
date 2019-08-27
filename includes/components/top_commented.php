@@ -1,7 +1,7 @@
 
 <div class="uk-text-left uk-width-1-1@s uk-width-1-1@m uk-width-1-1@l uk-margin-medium-top">
 
-<span class="uk-text-left home_title">TOP commented</span>
+<span class="uk-text-left home_title">Trending <i class="fas fa-chart-line homepage_icon"></i></span>
 </div>
 <div class="uk-text-left uk-width-1-1@s uk-width-1-1@m uk-width-1-1@l uk-margin-remove uk-margin-auto uk-padding-remove" uk-grid>
 <?php
@@ -39,9 +39,7 @@
                  </div>
                  <div class="uk-width-1-2">
                    <p class="uk-margin-remove-top">
-                     <time datetime="2016-04-01T19:00">
-                       <?php echo $post['Add_Date']; ?>
-                     </time>
+                     <?php echo date("D M Y", strtotime($post['Add_Date']));?>
                    </p>
                  </div>
                </div>

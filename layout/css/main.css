@@ -105,11 +105,19 @@ body{
 
 }
 .uk-navbar-nav li a{
-  color: #2e0080;
+  color: #fff;
   letter-spacing: 1px;
   font-weight: 900;
   letter-spacing: 2px;
   font-size: 17px;
+}
+
+.list_home a{
+  color: #2e0080 !important;
+}
+
+.list_homepage a{
+  color: #2e0080 !important;
 }
 
 .list_home a:hover,
@@ -121,12 +129,6 @@ body{
   margin-left: 9px;
 }
 
-.list_home a svg{
-  color: #f0506e;
-}
-.uk-navbar-nav li a svg:hover{
-  color: #f0506e;
-}
 
 .uk-accordion-content div a{
   color: #1a0a4c;
@@ -164,13 +166,6 @@ body{
 
 .sec_background{
   background: #f0506e !important;
-}
-
-.list_nav a:hover {
-    color: #fff !important;
-}
-.list_nav a {
-    color: #ccc !important;
 }
 
 .otherBackground{
@@ -356,7 +351,7 @@ body{
 }
 
 .acitveTwo{
-  background: #2e0080!important;
+  background: #2e0080 !important;
   box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.2);
 }
 
@@ -364,10 +359,21 @@ body{
   color: #fff !important;
 }
 
-.active_upper{
-  background: rgb(34, 19, 82) !important;
+.acitveTwo a:hover {
+  color: #ccc !important;
 }
-
+.active_upper{
+  background: #2e0080 !important;
+}
+.active_upper a{
+color: #ccc !important;
+}
+.active_upper a:hover{
+  color: #fff !important;
+}
+.active_upper a svg:hover{
+  color: inherit !important;
+}
 .log-sign{
   color: #ddd;
 font-size: 26px;
@@ -380,12 +386,17 @@ font-size: 26px;
 /* start Profile Page */
 .profile-title{
   margin: 0;
-  border-bottom: 1px solid #1a0a4c;
+  border-bottom: 2px solid #f0506e;
   padding: .5em;
+  text-align: left;
+  font-size: 33px;
+  color: #ccc !important;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-shadow: 0px 1px 2px #000;
 }
 .hold_posts{
-  background: #dcc;
-  padding: .5em;
+  margin: auto;
 }
 
 .profile_img img{
@@ -584,7 +595,7 @@ button {
   display: flex;
   margin-top: 3em;
   padding: 6px;
-  background: #f0506e;
+  border-bottom: 1px solid rgba(240, 80, 110, 0.3);
   transition: all .5s ease-in;
 }
 .social_profile ul:hover{
@@ -593,7 +604,7 @@ button {
 .social_profile ul li a {
   transition: all 0.3s ease 0s;
   font-size: 28px;
-  color: #ccc;
+  color: #f0506e;
 }
 @media only screen and (max-width:768px) {
 .social_profile ul li a{margin-right:10px;margin-bottom:10px;}
@@ -606,16 +617,23 @@ button {
 }
 }
 .social_profile ul li a:hover{
-color:#fff;
+color:#890080;
 }
 /*END SOCIAL PROFILE CSS*/
 .copyright {
-  color: #ccc;
+  color: #890080;
   text-transform: uppercase;
   letter-spacing: 3px;
 }
-.copyright a{color:#fff;transition: all 0.2s ease 0s;}
-.copyright a:hover{color:#FFEB3B;}
+.copyright a{
+  color: #890080;
+  transition: all 0.2s ease 0s;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+.copyright a:hover{
+color: #f0506e;
+}
 /* End Footer */
 
 .home_title{
@@ -627,6 +645,7 @@ color:#fff;
   color: #2e0080;
   font-weight: 900;
 }
+
 
 
 .home_title:after {
@@ -684,10 +703,26 @@ color:#fff;
 .cat_pagi ul li a:hover{
   color: #fff;
 }
-.child_cat{
-  display: flex !important;
-  background: #ccc !important;
-  padding: 1em !important;
+
+.hold_sub_cats{
+  width: 80%;
+  margin: auto;
+}
+.hold_sub_cats ul{
+  padding: 1em;
+  display: flex;
+}
+.hold_sub_cats ul li{
+  border: 1px solid #ccc;
+
+  background: #f0506e;
+  padding: 4px;
+  margin: 4px;
+}
+.hold_sub_cats ul li a{
+  color: #ffffff;
+  font-weight: 900;
+  letter-spacing: 3px;
 }
 /* End Categories Page */
 
@@ -759,19 +794,23 @@ ul.uk-comment-list {
   font-size: 22px;
   font-weight: 900;
   letter-spacing: 3px;
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.1);
   padding: 1em;
   padding-top: 0px;
 }
 
 .hold_comment{
-  width: 80%;
+  width: 95%;
   margin: auto;
-  margin-top: 4em;
+  margin-top: 2em;
+  border-radius: 9px;
+  background: #ddd;
+  padding: 1em;
 }
 .hold_comment_box{
   background: #f0506e;
   margin: 0;
+  border-radius: 9px;
 }
 
 .post_info{
@@ -859,4 +898,92 @@ h3.post_title_cat a {
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: 700;
+}
+
+
+.profile_email a span{
+  padding: 0 10px;
+  font-size: 15px;
+  color: #f0506e;
+  text-transform: uppercase;
+}
+.profile_email a span:nth-child(2){
+  color: #2e0080;
+}
+
+
+.homepage_icon{
+  font-size: 22px;
+  margin-left: 9px;
+  color: #f0506e;
+}
+
+
+.comment {
+  margin: 4px auto;
+  justify-content: center;
+  padding: 5px;
+  background: #f0506e;
+}
+
+.comment p {
+  margin: 2em auto;
+  padding: 1px;
+  color: #1a0a4c;
+}
+.comment p span {
+    color: #ffffff;
+}
+
+.head_post{
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  padding: 15px;
+}
+
+.head_post img{
+  height: 175px;
+}
+
+.caption{
+  border-bottom: 2px solid #2e0080;
+  padding: 9px;
+  margin-top: 9px;
+  border-top: 2px solid #f0506e;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.25);
+}
+.head_post h3 a {
+    color: #2e0080;
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+}
+
+a.log-sign {
+    color: #2e0080 !important;
+}
+
+.down_nav{
+  border-top: 1px solid #2E007F;
+  border-bottom: 1px solid #2E007F;
+}
+.child_cat{
+  background: #2e0080;
+}
+
+.a_header {
+color: #f0506e !important;
+}
+
+.a_header:hover {
+  color: #2e0080 !important;
+}
+.no_time{
+  padding: 2em;
+}
+.no_time h1{
+  font-family: 'Indie Flower', cursive;
+  color: #2e0080;
 }

@@ -1,5 +1,4 @@
 <?php global $user_info, $session_user, $current_page; // Global Vars ?>
-
   <!DOCTYPE html>
   <html lang="en" dir="ltr">
 
@@ -8,6 +7,8 @@
     <title>
       <?php getTitle(); ?>
     </title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+
 
     <?php
     on_styles('uikit.min');
@@ -18,7 +19,7 @@
   </head>
 
   <body>
-    <header class="front_header" uk-grid>
+    <header class="front_header" uk-sticky uk-grid>
       <?php if(isset($_SESSION['user'])) { ?>
 
         <!-- Start nav one -->
@@ -29,7 +30,7 @@
             <ul class="uk-navbar-nav">
               <li class="list_home">
                 <a href="index.php">
-                  <i class="fas fa-home fa-1x"></i> Home Page
+                  <i class="fas fa-home fa-1x"></i>Film Society
                 </a>
               </li>
             </ul>
@@ -39,11 +40,13 @@
           <!-- Start RIGHT nav ONE -->
           <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
+              <?php if($user_info['GroupID'] != 0 ) { ?>
               <li class="list_homepage">
-                <a href="admin/index.php">
+                <a class="MainColor" href="admin/index.php">
                   <i class="fas fa-tachometer-alt fa-1x"></i>
                 </a>
               </li>
+            <?php } ?>
               <li class="list_homepage <?php if(isset($current_page) && $current_page == 'add-post.php') { echo " active_upper "; } ?>">
                 <a href="add-post.php" class="">
                   <i class="fas fa-edit fa-1x"></i>
@@ -57,7 +60,7 @@
                 </a>
               </li>
               <li class="list_homepage">
-                <a href="logout.php">
+                <a class="MainColor" href="logout.php">
                   <i class="fas fa-sign-out-alt fa-1x"></i>
                 </a>
               </li>
@@ -67,7 +70,7 @@
         </nav>
         <!-- end nav one -->
         <!-- Start nav two  -->
-        <nav class="uk-navbar uk-width-1-1 uk-margin-remove sec_background" uk-navbar>
+        <nav class="uk-navbar uk-width-1-1 uk-margin-remove down_nav" uk-navbar>
           <ul class="uk-navbar-nav uk-margin-auto" uk-grid>
             <?php
             $top_nav_cat = get_all_rec('*', 'categories', 'parent = 0', 'ID DESC', 4);
@@ -77,23 +80,26 @@
 
                 <li class="list_nav uk-padding-remove <?php if(isset($_GET['page_title']) && $_GET['page_title'] == $cat['Name']) { echo "acitveTwo";} ?>">
                    <?php
-                  echo "<a href='categories.php?pageid=".$cat['ID']."&page_title=".str_replace(' ', '-', $cat['Name'])."'>";
+                  echo "<a class='a_header' href='categories.php?pageid=".$cat['ID']."&page_title=".str_replace(' ', '-', $cat['Name'])."'>";
                     echo $cat['Name'];
                   echo "</a>"; ?>
                 </li>
-                <ul class="" uk-dropdown>
+                <?php
+                $down_nav_cat = get_all_rec("*", "sub_categories", "category_id = {$cat['ID']}", "id_sub DESC", 4);
+                if (!empty($down_nav_cat)) { ?>
+                <ul class="child_cat" uk-dropdown>
+                <?php
+                foreach ($down_nav_cat as $down) { ?>
+                <li>
                   <?php
-                  $down_nav_cat = get_all_rec("*", "categories", "parent = {$cat['ID']}", "ID DESC", 5);
+                  echo "<a href='categories.php?pageid=".$down['id_sub']."&page_title=".str_replace(' ', '-', $down['name_sub'])."'>";
+                    echo $down['name_sub'];
+                  echo "</a>"; ?>
+                </li>
+            <?php  }  ?>
+          </ul>
+        <?php } ?>
 
-                  foreach ($down_nav_cat as $down) { ?>
-                  <li>
-                    <?php
-                    echo "<a href='categories.php?pageid=".$down['ID']."&page_title=".str_replace(' ', '-', $down['Name'])."'>";
-                      echo $down['Name'];
-                    echo "</a>"; ?>
-                  </li>
-                <?php }  ?>
-              </ul>
             <?php } ?>
           </ul>
         </nav>
@@ -102,14 +108,9 @@
             <div class="uk-navbar-left">
               <ul class="uk-navbar-nav">
                 <li class="list_home">
-                  <a href="index.php">
+                  <a class="" href="index.php">
                     <i class="fas fa-home fa-1x"></i> Home Page
                   </a>
-                </li>
-                <li>
-                  <a href="login.php" class="log-sign">
-              Login / Sign Up <i class="fas fa-sign-in-alt fa-1x"></i>
-            </a>
                 </li>
               </ul>
             </div>
@@ -126,24 +127,31 @@
                     <li class="list_nav uk-padding-remove <?php if(isset($zoz) &&$zoz == $dod) {
                       echo "acitveTwo";}  ?>">
                        <?php
-                      echo "<a href='categories.php?pageid=".$cat['ID']."&page_title=".str_replace(' ', '-', $cat['Name'])."'>";
+                      echo "<a class='a_header' href='categories.php?pageid=".$cat['ID']."&page_title=".str_replace(' ', '-', $cat['Name'])."'>";
                         echo $dod;
                       echo "</a>"; ?>
                     </li>
-                    <ul class="" uk-dropdown>
+                    <?php
+                    $down_nav_cat = get_all_rec("*", "sub_categories", "category_id = {$cat['ID']}", "id_sub DESC", 4);
+                    if (!empty($down_nav_cat)) { ?>
+                    <ul class="child_cat" uk-dropdown>
+                    <?php
+                    foreach ($down_nav_cat as $down) { ?>
+                    <li>
                       <?php
-                      $down_nav_cat = get_all_rec("*", "categories", "parent = {$cat['ID']}", "ID DESC", 5);
-
-                      foreach ($down_nav_cat as $down) { ?>
-                      <li>
-                        <?php
-                        echo "<a href='categories.php?pageid=".$down['ID']."&page_title=".str_replace(' ', '-', $down['Name'])."'>";
-                          echo $down['Name'];
-                        echo "</a>"; ?>
-                      </li>
-                    <?php }  ?>
-                  </ul>
+                      echo "<a href='categories.php?pageid=".$down['id_sub']."&page_title=".str_replace(' ', '-', $down['name_sub'])."'>";
+                        echo $down['name_sub'];
+                      echo "</a>"; ?>
+                    </li>
+                <?php  }  ?>
+              </ul>
+            <?php } ?>
                 <?php } ?>
+                <li>
+                  <a href="login.php" class="log-sign">
+              Login / Sign Up <i class="fas fa-sign-in-alt fa-1x"></i>
+            </a>
+                </li>
               </ul>
             </div>
           </nav>
