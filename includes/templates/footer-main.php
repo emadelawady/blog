@@ -3,7 +3,7 @@
     <div class="uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s">
 
       <div class="single_footer">
-        <h4>Categories</h4>
+        <h4>أقسام رئيسية</h4>
         <ul class="uk-width-1-1" uk-grid>
 
         <?php
@@ -24,7 +24,7 @@
     <!--- END COL -->
     <div class="uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s">
       <div class="single_footer single_footer_address">
-        <h4>Latest Posts</h4>
+        <h4>أحدث المقالات</h4>
         <div class="hold_latest">
               <?php
               $latest_posts = get_all_rec('*', 'posts', '', 'Post_ID DESC',2);
@@ -47,10 +47,10 @@
     <!--- END COL -->
     <div class="uk-width-1-3@l uk-width-1-3@m uk-width-1-1@s">
       <div class="single_footer single_footer_address">
-        <h4>Subscribe today</h4>
+        <h4>اشترك الان بدون تسجيل</h4>
         <div class="signup_form">
           <form action="#" class="subscribe">
-            <input type="text" class="subscribe__input" placeholder="Enter Email Address">
+            <input type="text" class="subscribe__input" placeholder="أكتب بريدك الإلكترونى">
             <button type="button" class="subscribe__btn"><i class="fas fa-paper-plane"></i></button>
           </form>
         </div>
@@ -70,7 +70,7 @@
         </ul>
     </div>
     <div class="uk-width-1-1@s">
-      <p class="copyright">Copyright © 2019 <a href="#">Ragnar</a>.</p>
+      <p class="copyright">جميع الحقوق محفوظة <a href="#">راجنار</a>.</p>
     </div>
     <!--- END COL -->
   </div>

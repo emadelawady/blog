@@ -77,24 +77,26 @@ $hook_up->inc_header();
 	          <p class="post_info">
 	            <?php
 								if ($posts['Status'] == 1) {
-									echo "Published";
+									echo  "نشر";
 								} else{
-									echo "Drafted";
-								} ?> in
+									echo "أرشيف";
+								} ?> -
+								<span>
+								<?php echo date("M Y", strtotime($posts['Add_Date']));?>
+							</span> -
+								فى
 								<span>
 									<?php echo $posts['cat_name']; ?>
-								</span> by
+								</span> بواسطة
 								<span>
 									<?php echo $posts['Username']; ?>
 								</span>
-								<span>
-								<?php echo date("M Y", strtotime($posts['Add_Date']));?>
-							</span>
+
 	          </p>
 	        </div>
 					<div class="uk-width-1-2">
 						<p class="post_rating">
-							<?php echo 'Rating : <span>' . $posts['Rating'] . ' <i class="fas fa-star" ></i></span>'; ?>
+							<?php echo 'تقييم : <span>' . $posts['Rating'] . ' <i class="fas fa-star" ></i></span>'; ?>
 						</p>
 					</div>
 				</div>

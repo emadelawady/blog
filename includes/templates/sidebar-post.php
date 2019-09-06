@@ -1,5 +1,5 @@
 <div class="latest_posts">
-<h4>Latest Posts</h4>
+<h4>أحدث المقالات</h4>
 <?php $latest_comments = get_latest('*', 'posts', 'Post_ID', 5); ?>
 <ul>
   <?php foreach ($latest_comments as $latest) { ?>
@@ -12,7 +12,7 @@
 </ul>
 </div><!--End Latest Posts -->
 <div class="latest_users">
-<h4>Latest Users</h4>
+<h4>أحدث المسجلين</h4>
 <?php $latest_users = get_latest('*', 'users', 'UserID', 5);
 echo '<ul>';
 foreach ($latest_users as $latest_user) {

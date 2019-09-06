@@ -1,20 +1,20 @@
 <?php global $user_info, $session_user, $current_page; // Global Vars ?>
   <!DOCTYPE html>
-  <html lang="en" dir="ltr">
+  <html lang="ar" dir="rtl">
 
   <head>
     <meta charset="utf-8">
     <title>
       <?php getTitle(); ?>
     </title>
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
 
 
     <?php
-    on_styles('uikit.min');
+    on_styles('uikit-rtl.min');
     on_scripts('all.min');
     // on_styles('bootstrap.min');
-    on_styles('main');
+    on_styles('main-rtl');
     ?>
   </head>
 
@@ -30,7 +30,8 @@
             <ul class="uk-navbar-nav">
               <li class="list_home">
                 <a href="index.php">
-                  <i class="fas fa-home fa-1x"></i>Film Society
+                  فيلم سوسايتى
+                  <i class="fas fa-home fa-1x"></i>
                 </a>
               </li>
             </ul>
@@ -109,7 +110,8 @@
               <ul class="uk-navbar-nav">
                 <li class="list_home">
                   <a class="" href="index.php">
-                    <i class="fas fa-home fa-1x"></i> Home Page
+                    <i class="fas fa-home fa-1x"></i>
+                    فيلم سوسايتى
                   </a>
                 </li>
               </ul>
@@ -149,7 +151,8 @@
                 <?php } ?>
                 <li>
                   <a href="login.php" class="log-sign">
-              Login / Sign Up <i class="fas fa-sign-in-alt fa-1x"></i>
+                    <i class="fas fa-sign-in-alt fa-1x"></i>
+              تسجيل دخول / تسجيل
             </a>
                 </li>
               </ul>

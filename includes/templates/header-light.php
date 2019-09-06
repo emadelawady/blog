@@ -1,24 +1,24 @@
 <?php global $con, $user_info, $session_user, $current_page; // Global Vars ?>
   <!DOCTYPE html>
-  <html lang="en" dir="ltr">
+  <html lang="ar" dir="rtl">
 
   <head>
     <meta charset="utf-8">
     <title>
       <?php getTitle(); ?>
     </title>
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
 
     <?php
-    on_styles('uikit.min');
+    on_styles('uikit-rtl.min');
     on_scripts('all.min');
     // on_styles('bootstrap.min');
-    on_styles('main');
+    on_styles('main-rtl');
     ?>
   </head>
 
   <body>
-    <header class="front_header" uk-grid>
+    <header class="front_header" uk-sticky uk-grid>
       <?php if(isset($_SESSION['user'])) { ?>
 
         <!-- Start nav one -->
@@ -28,8 +28,9 @@
           <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
               <li>
-                <a href="index.php">
-                  <i class="fas fa-home fa-1x"></i> Home Page
+                <a class="home_up" href="index.php">
+                  فيلم سوسايتى
+                  <i class="fas fa-home fa-1x"></i>
                 </a>
               </li>
             </ul>
@@ -52,7 +53,7 @@
                 </a>
               </li>
               <li>
-                <a href="logout.php">
+                <a class="home_up" href="logout.php">
                   <i class="fas fa-sign-out-alt fa-1x"></i>
                 </a>
               </li>

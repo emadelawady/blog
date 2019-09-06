@@ -399,6 +399,11 @@ font-size: 26px;
   margin: auto;
 }
 
+.profile_img{
+  background: #ccc;
+  text-align: center;
+  padding: 1em;
+}
 .profile_img img{
   border-radius: 50%;
   margin-right: 9px;
@@ -966,8 +971,8 @@ a.log-sign {
 }
 
 .down_nav{
-  border-top: 1px solid #2E007F;
-  border-bottom: 1px solid #2E007F;
+  border-top: 1px solid #f0506e;
+  border-bottom: 1px solid #f0506e;
 }
 .child_cat{
   background: #2e0080;
@@ -986,4 +991,8 @@ color: #f0506e !important;
 .no_time h1{
   font-family: 'Indie Flower', cursive;
   color: #2e0080;
+}
+
+.home_up{
+  color: #2e0080 !important;
 }

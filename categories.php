@@ -2,7 +2,7 @@
 session_start();
 
 include 'init.php';
-$pageTitle = 'Categories - ' . $_GET['page_title'];
+$pageTitle = 'أقسام - ' . $_GET['page_title'];
 // get header
 $hook_up->inc_header();
 
@@ -19,9 +19,9 @@ $page_id = isset($_GET['pageid']) ? $_GET['pageid'] : "";
 ?>
   <div class="cat_title" uk-grid>
     <div class="uk-width-1-1">
-    <h1 class="uk-padding-small uk-text-left">
-      <span>Categories</span>
-       »
+    <h1 class="uk-padding-small uk-text-right">
+      <span>أقسام » </span>
+
     <?php if(!empty($_GET['page_title'])){ echo strtoupper(str_replace( '-', ' ',$_GET['page_title']));} else{
       echo "# Dude just be nice and pick up a category from top menu";
     } ?>

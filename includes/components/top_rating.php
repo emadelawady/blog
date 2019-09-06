@@ -1,6 +1,9 @@
 <div class="uk-text-left uk-width-1-1@s uk-width-1-1@m uk-width-1-1@l uk-margin-medium-top">
 
-<span class="uk-text-left home_title">TOP Rating <i class="fas fa-award homepage_icon"></i></span>
+<span class="uk-text-left home_title">
+  أفضل التقييمات
+   <i class="fas fa-award homepage_icon"></i>
+</span>
 </div>
 <div class="uk-text-left uk-width-1-1@s uk-width-1-1@m uk-width-1-1@l uk-margin-remove uk-margin-auto uk-padding-remove" uk-grid>
 <?php
@@ -32,7 +35,7 @@
                </div>
                <div class="uk-card-footer uk-margin-remove uk-transition-slide-bottom-small" uk-grid>
                  <div class="uk-width-1-2">
-                   <a href="posts.php?postid=<?php echo $post['Post_ID']; ?>" class="uk-label-success">Read more</a>
+                   <a href="posts.php?postid=<?php echo $post['Post_ID']; ?>" class="">More</a>
                  </div>
                  <div class="uk-width-1-2">
                    <p class="uk-margin-remove-top">

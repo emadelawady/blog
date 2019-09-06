@@ -22,9 +22,10 @@
 			global $user_info;
        ?>
 			 <a>
-				 <span class="profile_img">
+				 <div class="profile_img">
 				 <img width="70px" src="admin/uploads/avatars/<?php echo $user_info['avatar']; ?>" alt="">
-				 </span>
+				 <h2><?php echo $_SESSION['user']; ?>  - الملف الشخصى</h2>
+				 </div>
 			 </a>
   <main class="uk-margin-remove uk-margin-auto" uk-grid>
     <!-- <div id="sidebar" class="uk-width-1-6 uk-padding-remove">
@@ -33,12 +34,9 @@
     <div class="uk-width-1-1 uk-padding-remove otherBackground uk-text-center">
       <div class="uk-container">
       <div class="uk-margin-remove" uk-grid>
-        <div class="uk-width-1-1">
-          <h2><?php echo $_SESSION['user']; ?> 's Profile</h2>
-        </div>
 				<!-- Start My Posts -->
         <div class="uk-width-1-1 uk-card uk-card-default uk-padding-remove">
-					<h3 class="MainColor profile-title">Recent Posts</h3>
+					<h3 class="MainColor profile-title">أحدث مقالاتك</h3>
 
 					<div class="hold_posts cat-posts uk-border-rounded" uk-grid>
           <?php
@@ -73,7 +71,7 @@
 			<!-- End My Posts -->
 
 		<div class="uk-width-1-1 uk-padding-remove uk-margin-auto-vertical">
-			<h3 class="MainColor profile-title">Latest Comments</h3>
+			<h3 class="MainColor profile-title">أحدث تعليقاتك</h3>
 			<div class="uk-card">
 			<?php
 			// Select All Users Except Admin

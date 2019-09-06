@@ -2,15 +2,15 @@
 <div class="uk-container uk-padding">
 	<div class="hold_comment">
 
-	<h3 class="uk-text-center add_comment">Add Comment</h3>
+	<h3 class="uk-text-center add_comment">أضف تعليق</h3>
 
 	<?php if(isset($_SESSION['user'])) { ?>
 
 	<form class="uk-form" action="<?php echo $_SERVER['PHP_SELF'] . '?postid=' . $posts['Post_ID']; ?>" method="POST">
 		<div class="uk-form-row">
 			<div class="uk-form-controls uk-text-center">
-				<textarea type="text" id="comment" class="uk-textarea " name="comment" placeholder="Write a Comment"></textarea>
-				<button type="submit" class="uk-button">Add</button>
+				<textarea type="text" id="comment" class="uk-textarea" name="comment" placeholder="أكتب تعليقك"></textarea required="required">
+				<button type="submit" class="uk-button">أضف</button>
 			</div>
 		</div>
 	</form>
@@ -32,9 +32,14 @@
 				'zuser_id' => $user_id
 			));
 
-			if ($state) {
-				echo "<div class='uk-alert-success'>comment added</div>";
+			if(empty($comment)){
+				echo "<div class='uk-alert-danger'>Sorry Empty Comment doesnt pass</div>";
+			}elseif ($state) {
+				echo "<div class='uk-alert-success'>comment pending</div>";
 			}
+
+
+			
 	}
 
 } else{

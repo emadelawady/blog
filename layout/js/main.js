@@ -1,7 +1,13 @@
 $(function () {
   'user strict';
 
-
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 0) {
+      $('.down_nav').slideUp();
+    } else {
+      $('.down_nav').slideDown();
+    }
+  });
     // $('.live-title').keyup(function (){
     //   $('.live-preview .captionone h3').text($(this).val());
     // });

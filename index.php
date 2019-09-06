@@ -9,7 +9,7 @@ $hook_up->inc_header(); ?>
 <div class="uk-container  uk-margin">
   <div class="uk-text-center uk-margin uk-margin-auto" uk-grid>
     <div class="uk-text-center uk-width-1-1 no_time">
-      <h1>No Time For Bullshit , just REEL Posts</h1>
+      <!-- <h1>بدون مناوشات , فقط مقالات حقيقية</h1> -->
     </div>
     <?php
       include $components . 'top_rating.php';
