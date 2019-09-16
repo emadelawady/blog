@@ -12,10 +12,11 @@ $hook_up->inc_header(); ?>
       <!-- <h1>بدون مناوشات , فقط مقالات حقيقية</h1> -->
     </div>
     <?php
-      include $components . 'top_rating.php';
-      include $components . 'top_commented.php';
-      include $components . 'latest_posts.php';
-      include $components . 'random_posts.php';
+    // arr to store homepage sections title
+    $homepage_sec = array('top_rating', 'top_commented', 'latest_posts', 'random_posts');
+    // loop through homepage sections
+    foreach ($homepage_sec as $sec) { include($hook_up->component($sec, true)); }
+
     ?>
   </div>
 </div>

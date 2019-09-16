@@ -7,13 +7,15 @@
     <title>
       <?php getTitle(); ?>
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
 
 
     <?php
     on_styles('uikit-rtl.min');
     on_scripts('all.min');
-    // on_styles('bootstrap.min');
+    on_styles('bootstrap.min');
     on_styles('main-rtl');
     ?>
   </head>
@@ -40,28 +42,27 @@
 
           <!-- Start RIGHT nav ONE -->
           <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav">
-              <?php if($user_info['GroupID'] != 0 ) { ?>
-              <li class="list_homepage">
-                <a class="MainColor" href="admin/index.php">
-                  <i class="fas fa-tachometer-alt fa-1x"></i>
-                </a>
-              </li>
-            <?php } ?>
-              <li class="list_homepage <?php if(isset($current_page) && $current_page == 'add-post.php') { echo " active_upper "; } ?>">
-                <a href="add-post.php" class="">
+            <ul class="uk-navbar-nav header_light">
+              <li class="<?php if(isset($current_page) && $current_page == 'add-post.php') { echo " active_upper "; } ?>">
+                <a href="add-post.php" class="a_header">
                   <i class="fas fa-edit fa-1x"></i>
-                  <?php if($current_page == 'add-post.php') { echo "<span class='uk-text-success'> Add Post</span>"; } ?>
+                  <span class=''> إضافة مقالة</span>
                 </a>
               </li>
-              <li class="list_homepage <?php if(isset($current_page) && $current_page == 'profile.php') { echo " active_upper "; } ?>">
+              <li class="<?php if(isset($current_page) && $current_page == 'profile.php') { echo " active_upper "; } ?>">
                 <a href="profile.php">
                   <i class="fas fa-user fa-1x"></i>
-                  <?php if($current_page == 'profile.php') { echo "<span class='uk-text-success'> Profile</span>"; } ?>
+                  <span class=''> الملف الشخصى</span>
                 </a>
               </li>
-              <li class="list_homepage">
-                <a class="MainColor" href="logout.php">
+              <li class="<?php if(isset($current_page) && $current_page == 'edit-profile.php') { echo " active_upper "; } ?>">
+                <a href="edit-profile.php">
+                  <i class="fas fa-user-edit fa-1x"></i>
+                  <span class=''>تعديل الملف الشخصى</span>
+                </a>
+              </li>
+              <li>
+                <a class="home_up" href="logout.php">
                   <i class="fas fa-sign-out-alt fa-1x"></i>
                 </a>
               </li>
@@ -79,7 +80,7 @@
               foreach ($top_nav_cat as $cat) {
                  ?>
 
-                <li class="list_nav uk-padding-remove <?php if(isset($_GET['page_title']) && $_GET['page_title'] == $cat['Name']) { echo "acitveTwo";} ?>">
+                <li class="list_nav uk-padding-remove <?php if(isset($_GET['page_title']) && $_GET['page_title'] == str_replace(' ', '-', $cat['Name'])) { echo "acitveTwo";} ?>">
                    <?php
                   echo "<a class='a_header' href='categories.php?pageid=".$cat['ID']."&page_title=".str_replace(' ', '-', $cat['Name'])."'>";
                     echo $cat['Name'];
@@ -149,11 +150,19 @@
               </ul>
             <?php } ?>
                 <?php } ?>
-                <li>
+                <li class="uk-flex uk-flex-middle">
+                  <div class="">
+
+
                   <a href="login.php" class="log-sign">
                     <i class="fas fa-sign-in-alt fa-1x"></i>
-              تسجيل دخول / تسجيل
-            </a>
+                    تسجيل دخول
+                    </a>
+                  <a href="register.php" class="log-sign">
+                    <i class="fas fa-registered fa-1x" aria-hidden="true"></i>
+                    تسجيل
+                  </a>
+                    </div>
                 </li>
               </ul>
             </div>

@@ -38,7 +38,7 @@
                  </div>
                  <div class="uk-width-1-2">
                    <p class="uk-margin-remove-top">
-                       <?php echo date("D M Y", strtotime($post['Add_Date']));?>
+                       <?php echo date("M Y", strtotime($post['Add_Date']));?>
                    </p>
                  </div>
                </div>

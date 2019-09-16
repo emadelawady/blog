@@ -1,4 +1,6 @@
 <?php
+ob_start(); // output baffering start
+
 session_start();
 
 if(isset($_SESSION['Username'])) {
@@ -62,3 +64,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </form>
 </div>
  <?php include $templates . 'footer.php'; ?>
+ <?php ob_end_flush(); // Release The Output ?>

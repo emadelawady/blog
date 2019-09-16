@@ -7,12 +7,14 @@
     <title>
       <?php getTitle(); ?>
     </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
 
     <?php
     on_styles('uikit-rtl.min');
     on_scripts('all.min');
-    // on_styles('bootstrap.min');
+    on_styles('bootstrap.min');
     on_styles('main-rtl');
     ?>
   </head>
@@ -29,7 +31,7 @@
             <ul class="uk-navbar-nav">
               <li>
                 <a class="home_up" href="index.php">
-                  فيلم سوسايتى
+                  الصفحة الرئيسية
                   <i class="fas fa-home fa-1x"></i>
                 </a>
               </li>
@@ -39,17 +41,23 @@
 
           <!-- Start RIGHT nav ONE -->
           <div class="uk-navbar-right">
-            <ul class="uk-navbar-nav">
+            <ul class="uk-navbar-nav header_light">
               <li class="<?php if(isset($current_page) && $current_page == 'add-post.php') { echo " active_upper "; } ?>">
                 <a href="add-post.php" class="a_header">
                   <i class="fas fa-edit fa-1x"></i>
-                  <?php if($current_page == 'add-post.php') { echo "<span class=''> Add Post</span>"; } ?>
+                  <span class=''> إضافة مقالة</span>
                 </a>
               </li>
               <li class="<?php if(isset($current_page) && $current_page == 'profile.php') { echo " active_upper "; } ?>">
                 <a href="profile.php">
                   <i class="fas fa-user fa-1x"></i>
-                  <?php if($current_page == 'profile.php') { echo "<span class=''> Profile</span>"; } ?>
+                  <span class=''> الملف الشخصى</span>
+                </a>
+              </li>
+              <li class="<?php if(isset($current_page) && $current_page == 'edit-profile.php') { echo " active_upper "; } ?>">
+                <a href="edit-profile.php">
+                  <i class="fas fa-user-edit fa-1x"></i>
+                  <span class=''>تعديل الملف الشخصى</span>
                 </a>
               </li>
               <li>
@@ -63,33 +71,41 @@
         </nav>
         <!-- end nav one -->
         <!-- Start nav two  -->
+        <!-- Start nav two  -->
         <nav class="uk-navbar uk-width-1-1 uk-margin-remove down_nav" uk-navbar>
-          <ul class="uk-navbar-nav uk-width-1-1 uk-text-center" uk-grid>
-            <!-- Right -->
-            <li class="profile_email">
-              <a>
-                <span class="uk-text-capitalize">username: <?php echo $_SESSION['user']; ?> </span>
-              </a>
-            </li>
-            <li class="profile_email">
-              <a>
-                <span class="">Email</span>
-                <span class=""><?php echo $user_info['Email']; ?></span>
-              </a>
-            </li>
-            <li class="profile_email">
-              <a>
-                <span class="">Status</span>
-                <?php if ($user_info['RegStatus'] == 1) {
-                  echo "<span class=''>Activated</span>";
-                } else{
-                  echo "<span class='uk-label-danger'>Not Activated</span>";
+          <ul class="uk-navbar-nav uk-margin-auto" uk-grid>
+            <?php
+            $top_nav_cat = get_all_rec('*', 'categories', 'parent = 0', 'ID DESC', 4);
 
-                }?>
-              </a>
-            </li>
+              foreach ($top_nav_cat as $cat) {
+                 ?>
+
+                <li class="list_nav uk-padding-remove <?php if(isset($_GET['page_title']) && $_GET['page_title'] == str_replace(' ', '-', $cat['Name'])) { echo "acitveTwo";} ?>">
+                   <?php
+                  echo "<a class='a_header' href='categories.php?pageid=".$cat['ID']."&page_title=".str_replace(' ', '-', $cat['Name'])."'>";
+                    echo $cat['Name'];
+                  echo "</a>"; ?>
+                </li>
+                <?php
+                $down_nav_cat = get_all_rec("*", "sub_categories", "category_id = {$cat['ID']}", "id_sub DESC", 4);
+                if (!empty($down_nav_cat)) { ?>
+                <ul class="child_cat" uk-dropdown>
+                <?php
+                foreach ($down_nav_cat as $down) { ?>
+                <li>
+                  <?php
+                  echo "<a href='categories.php?pageid=".$down['id_sub']."&page_title=".str_replace(' ', '-', $down['name_sub'])."'>";
+                    echo $down['name_sub'];
+                  echo "</a>"; ?>
+                </li>
+            <?php  }  ?>
+          </ul>
+        <?php } ?>
+
+            <?php } ?>
           </ul>
         </nav>
+
         <?php } else{ ?>
           <nav class="uk-navbar uk-width-1-1 uk-margin-remove">
             <div class="uk-navbar-left">

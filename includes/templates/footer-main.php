@@ -70,7 +70,9 @@
         </ul>
     </div>
     <div class="uk-width-1-1@s">
-      <p class="copyright">جميع الحقوق محفوظة <a href="#">راجنار</a>.</p>
+      <p class="copyright">
+        تصميم وبرمجة
+        @ <a href="#">راجنار</a>.</p>
     </div>
     <!--- END COL -->
   </div>
@@ -79,7 +81,7 @@
 <!--- END CONTAINER -->
 <?php
   // store scripts name into array with variable
-  $scripts = array(/*'vue.min', */ 'uikit-icons.min', 'uikit.min', /*'bootstrap.min',*/ 'jquery-1.12.1.min', 'jquery-ui.min', 'main');
+  $scripts = array(/*'vue.min', */ 'uikit-icons.min', 'uikit.min', 'bootstrap.min', 'jquery-1.12.1.min', 'jquery-ui.min', 'main');
 
   foreach ($scripts as $val) {
     on_scripts($val);

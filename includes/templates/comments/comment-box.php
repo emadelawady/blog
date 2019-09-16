@@ -33,11 +33,14 @@ if (!empty($comments)) { ?>
 											<img class="uk-comment-avatar" src="avatar.jpg" width="80" height="80" alt="">
 									</div>
 									<div class="uk-width-expand">
-											<h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#"><?php echo $comment['Username']; ?></a></h4>
-											<p class="uk-comment-meta uk-margin-remove-top"><a class="uk-link-reset" href="#">12 days ago</a></p>
+											<h4 class="uk-comment-title"><a class="uk-link-reset" href="#"><?php echo $comment['Username']; ?></a></h4>
+											<p class="uk-comment-meta uk-margin-remove-top">
+												<?php echo $comment['comment_date']; ?>
+											</p>
 									</div>
 							</div>
-							<div class="uk-position-top-right uk-position-small uk-hidden-hover"><a class="uk-link-muted" href="#">Reply</a></div>
+							<div class="uk-position-top-left uk-position-small uk-hidden-hover"><a class="uk-link-muted" href="#">اترك رد</a>
+							</div>
 					</header>
 					<div class="uk-comment-body">
 							<p><?php echo $comment['comment']; ?></p>

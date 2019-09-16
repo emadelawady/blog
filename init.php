@@ -43,6 +43,10 @@ $user_state->execute(array($session_user));
    * class for holding headers and footers
    */
   class hook {
+
+    public $components = 'includes/components/';
+
+
     public function inc_header($part = Null, $dash = Null, $header = 'header'){
       $temps = 'includes/templates/';
     return $head = include $temps . $header. $dash . $part. '.php';
@@ -50,6 +54,15 @@ $user_state->execute(array($session_user));
     public function inc_footer($part = Null, $dash = Null,$footer = 'footer'){
       $temps = 'includes/templates/';
     return $foot = include $temps . $footer. $dash . $part. '.php';
+    }
+
+    public function component($name, $php = NULL) {
+        if ($php != NULL) {
+          $php = '.php';
+        }
+        $url = $this->components . $name . $php;
+
+      return $url;
     }
   }
   $hook_up = new hook();

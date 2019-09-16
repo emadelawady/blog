@@ -8,12 +8,6 @@ $hook_up->inc_header();
 if (isset($_session['user'])) {
   // redirect to Home page
   header('Location:index.php');
-} else{
-  echo "
-  <style>
-  .front_header  {display: none;}
-  </style>
-  ";
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -113,100 +107,55 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $actual_link = "http://" .$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-if($actual_link){echo "<style>.log-sign{display: none;}</style>";}
 ?>
-<div class="uk-container hold-login">
-<div class="login-page" uk-grid>
-  <div class="uk-width-1-1">
-    <h2 class="uk-text-center">
-      <span class="selected" data-class="login">Login</span> ||
-      <span data-class="signup">Sign Up</span>
-    </h2>
-  </div>
-<!-- Start Login Form -->
 
-<form class="uk-form uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle login" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
-  <div class="uk-form-row uk-text-center">
-    <div class="uk-margin">
-    <label class="uk-form-label uk-padding-small" for="user">User Name</label>
-    <div class="uk-form-controls uk-inline-clip">
-      <input name="user" class="uk-padding-small uk-input" type="text" id="user" placeholder="Admin User Name"  autocomplete="off">
-    </div>
-  </div>
-  <div class="uk-margin">
-  <label class="uk-form-label uk-padding-small" for="password">Password</label>
-  <div class="uk-form-controls uk-inline-clip">
-    <input name="pass" class="uk-padding-small uk-input" type="password" id="password" placeholder="Admin Password" autocomplete="new-password">
-      </div>
-    </div>
-    <div class="uk-margin">
-    <div class="uk-form-controls">
-      <input class="uk-button uk-button-primary" name="login" type="submit" id="submit" value="log in">
-        </div>
-      </div>
-  </div>
-</form>
+<div class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport>
+    <div class="uk-width-1-1">
+            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+                <div class="uk-width-1-1@m">
+                    <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+                        <h3 class="uk-card-title uk-text-center">مرحبا مجددا</h3>
+                        <form class="uk-form uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle uk-text-center login" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" uk-grid>
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                                    <input name="user" class="uk-input uk-form-large" type="text"  id="user" placeholder="اسم المستخدم"  autocomplete="off">
+                                </div>
+                                <div class="uk-inline uk-width-1-1">
+                                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                    <input name="pass" class="uk-input uk-form-large" type="password" id="password" placeholder="كلمة المرور" autocomplete="new-password">
+                            </div>
+                            <div class="uk-width-1-1">
+                                <input class="uk-button uk-button-primary" name="login" type="submit" id="submit" value="تسجيل دخول">
+                            </div>
+                            <div class="uk-width-1-1 uk-text-small uk-text-center">
+                                لست مسجلا بعد ؟ <a href="register.php">انضم الينا</a>
+                            </div>
+                        </form>
+                        <div class="uk-width-1-1 errors">
+                          <?php
+                          global $formErrors;
+                        //  print_r($formErrors);
 
-<!-- End Login Form -->
-
-<!-- Start Sign Up Form -->
-
-<form class="uk-form  uk-height-1-1 uk-width-1-1 uk-flex-middle signup uk-flex" method="POST" <?php $_SERVER['PHP_SELF'] ?>>
-  <div class="uk-form-row uk-text-center">
-    <div class="uk-margin">
-    <label class="uk-form-label uk-padding-small" for="user">User Name</label>
-    <div class="uk-form-controls uk-inline-clip">
-      <input name="user" pattern=".{4,20}" title="Must be between 4 - 20" class="uk-padding-small uk-input" type="text" id="user" placeholder="User Name" required autocomplete="off">
+                        if (is_array($formErrors) || is_object($formErrors))
+                        {
+                            foreach ($formErrors as $err)
+                            {
+                              echo $err . '<br>';
+                            }
+                        }
+                        if (isset($success)) { ?>
+                          <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-height-viewport">
+                            <?php echo $success; ?>
+                         </div>
+                        <?php
+                        }
+                           ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </div>
-  </div>
-  <div class="uk-margin">
-  <label class="uk-form-label uk-padding-small" for="password">Password</label>
-  <div class="uk-form-controls uk-inline-clip">
-    <input name="pass" minlength="6" class="uk-padding-small uk-input" type="password" id="password" placeholder="Password" autocomplete="new-password" required>
-      </div>
-    </div>
-    <div class="uk-margin">
-    <label class="uk-form-label uk-padding-small" for="password">Repeat Password</label>
-    <div class="uk-form-controls uk-inline-clip">
-      <input name="pass2" minlength="6" class="uk-padding-small uk-input" type="password" id="password2" placeholder="Password" autocomplete="new-password" required>
-        </div>
-      </div>
-    <div class="uk-margin">
-    <label class="uk-form-label uk-padding-small" for="user">Email</label>
-    <div class="uk-form-controls uk-inline-clip">
-      <input name="email" class="uk-padding-small uk-input" type="email" id="email" placeholder="your Email" required>
-    </div>
-  </div>
-    <div class="uk-margin">
-    <div class="uk-form-controls">
-      <input class="uk-button uk-button-primary" name="signup" type="submit" id="submit" value="Sign Up">
-        </div>
-      </div>
-  </div>
-</form>
-<div class="uk-width-1-1 errors">
-  <?php
-  global $formErrors;
-//  print_r($formErrors);
-
-if (is_array($formErrors) || is_object($formErrors))
-{
-    foreach ($formErrors as $err)
-    {
-      echo $err . '<br>';
-    }
-}
-if (isset($success)) { ?>
-  <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-height-viewport">
-    <?php echo $success; ?>
- </div>
-<?php
-}
-   ?>
 </div>
 
-<!-- End Sign Up Form  -->
 
-</div>
-</div>
-<?php include $templates . 'footer.php'; ?>
+<?php include $templates . 'footer-main.php'; ?>

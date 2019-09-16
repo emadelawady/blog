@@ -21,12 +21,10 @@
 			// users table
 			global $user_info;
        ?>
-			 <a>
 				 <div class="profile_img">
-				 <img width="70px" src="admin/uploads/avatars/<?php echo $user_info['avatar']; ?>" alt="">
-				 <h2><?php echo $_SESSION['user']; ?>  - الملف الشخصى</h2>
+				 <img width="200px" src="admin/uploads/avatars/<?php echo $user_info['avatar']; ?>" alt="">
+				 <h2 class="uk-text-capitalize"><?php echo $_SESSION['user']; ?></h2>
 				 </div>
-			 </a>
   <main class="uk-margin-remove uk-margin-auto" uk-grid>
     <!-- <div id="sidebar" class="uk-width-1-6 uk-padding-remove">
         <?php	//include $templates . 'sidebar.php'; ?>
@@ -83,6 +81,7 @@
 														INNER JOIN posts
 														ON comments.`post-id` = posts.Post_ID
 														WHERE `user-id` = ?
+														ORDER BY c_id DESC
 														LIMIT 3
 														");
 

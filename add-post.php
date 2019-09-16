@@ -11,10 +11,11 @@
 
 	session_start();
 
-  $pageTitle = "Add post";
+  $pageTitle = "إضافة مقالة";
 
   	if (isset($_SESSION['user'])) {
       include 'init.php';
+
 			// get header
 			$hook_up->inc_header('light', '-');
       // users table
@@ -81,16 +82,14 @@
 			}
        ?>
 
-  <main class="uk-margin-remove uk-margin-auto fullHieght" uk-grid>
+  <main class="uk-margin-remove uk-margin-auto" uk-grid>
     <!-- <div id="sidebar" class="uk-width-1-6 uk-padding-remove">
         <?php	//include $templates . 'sidebar.php'; ?>
     </div> -->
-    <div class="uk-width-1-1 uk-padding-small otherBackground uk-text-center">
+    <div class="uk-width-1-1 otherBackground uk-text-center">
       <div class="uk-container">
-      <div class="uk-margin-remove" uk-grid>
-        <div class="uk-width-1-1">
-          <h2>Add Post</h2>
-        </div>
+      <div class="" uk-grid>
+
 				<div class="uk-width-1-1 form_errors">
 					<?php
 					if(! empty($formErrors)){
@@ -109,64 +108,93 @@
 			<!-- Start Add Post -->
       <div class="">
           <!-- Start add post form -->
-          <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" class="uk-margin-auto uk-text-center" uk-grid>
+          <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data" class="uk-margin-top uk-margin-auto uk-text-center" uk-grid>
+						<h3 class="MainColor">
+							معلومات أساسية
+						</h3>
+						<div class="uk-width-1-1 title_desc" uk-grid>
+
+
             <!-- Start Post Name Field -->
-            <div class="uk-margin uk-width-1-1">
-              <div class="uk-inline">
+            <div class="uk-width-1-1">
+              <div class="">
                 <span class="uk-form-icon" uk-icon="icon: user"></span>
-                <input type="text" name="name" class="uk-input uk-form-width-large live-title" autocomplete="off"  placeholder="Post Name" />
+                <input type="text" name="name" class="uk-input uk-form-width-large live-title" autocomplete="off"  placeholder="عنوان المقالة" />
               </div>
             </div>
             <!-- End Post Name Field -->
             <!-- Start Description Field -->
-            <div class="uk-margin uk-width-1-1">
-              <div class="uk-inline">
+            <div class="uk-width-1-1">
+              <div class="">
                   <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                  <textarea name="description" class="uk-textarea uk-form-width-large" placeholder="Description"></textarea>
+                  <textarea name="description" class="uk-textarea uk-form-width-large live-title" placeholder="المحتوى"></textarea>
               </div>
             </div>
             <!-- End Description Field -->
+						</div>
 
+						<h3 class="MainColor">أختار قسم</h3>
             <!-- Start category Field -->
-            <div class="uk-margin uk-width-1-1">
-              <div class="uk-inline">
-                  <span>Category</span>
-                  <select class="uk-form-select uk-select" name="cat"  data-uk-form-select>
-                    <option value="0">...</option>
-                    <?php
-                      $stmt = $con->prepare("SELECT * FROM categories");
-                      $stmt->execute();
-                      $cats = $stmt->fetchAll();
-                      foreach ($cats as $cat) { ?>
-                        <option value="<?php echo $cat['ID'] ?>"><?php echo $cat['Name']; ?></option>
-                    <?php
-                    }
-                    ?>
-                  </select>
-              </div>
+            <div class="uk-width-1-1">
+							<div class="uk-form-controls uk-form-controls-text cat_form" uk-grid>
+
+							<?php $stmt = $con->prepare("SELECT * FROM categories");
+							$stmt->execute();
+							$cats = $stmt->fetchAll();
+							foreach ($cats as $cat) { ?>
+								<div class="uk-width-1-2 uk-padding-removen uk-text-right">
+							<label class="uk-label uk-padding-small">
+								<input class="uk-radio" type="radio" name="cat" value="<?php echo $cat['ID'] ?>">
+								<?php echo $cat['Name']; ?>
+							</label>
+						</div>
+							<?php	}	?>
+							</div>
             </div>
             <!-- End category Field -->
+
+						<h3 class="MainColor">
+							معلومات أساسية
+						</h3>
+						<div class="uk-width-1-1 title_desc" uk-grid>
 						<!-- Start Tags Field -->
-						<div class="uk-margin uk-width-1-1">
-							<div class="uk-inline">
-								<i class="fas fa-tags"></i>
-								<input type="text" name="tags" class="uk-input uk-form-width-large" placeholder="separate tags with commas (,)" />
-							</div>
+						<h4 class="MainColor">
+							<i class="fas fa-tags"></i>
+							كلمات مفتاحية - لمحركات البحث
+						</h4>
+						<div class="uk-width-1-1">
+
+							<div class="">
+								<input type="text" name="tags" class="uk-input uk-form-width-large" placeholder="أفصل بين الكلمات المميزة فى مقالك بعلامة الـ (,)" />
 						</div>
+					</div>
 						<!-- End Tags Field -->
+
+						<h4 class="MainColor">
+							<i class="fas fa-check"></i>
+							صورة المقال الرئيسية
+						</h4>
+						<div class="">
+
+							<span class="uk-form-icon" uk-icon="icon: user"></span>
+							<input id="image" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" type="file" name="post_upload" class="uk-input uk-form-width-large" required="required" />
+					</div>
 						<!-- Start post image Field -->
-						<div class="uk-margin uk-width-1-1 image_upload">
-							<div class="uk-inline">
-								<span class="uk-form-icon" uk-icon="icon: user"></span>
-								<input id="image" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" type="file" name="post_upload" class="uk-input uk-form-width-large" required="required" />
-										<img id="blah"  width="100" height="100" />
-							</div>
+						<div class="uk-width-1-1 image_upload">
+
+
+						<div class="uk-margin">
+							<img class="" id="blah"  width="300" height="150" />
+
 						</div>
+
+					</div>
+				</div>
 						<!-- End post image Field -->
             <!-- Start Submit Field -->
-            <div class="uk-margin uk-width-1-1">
+            <div class="uk-width-1-1">
               <div class="uk-inline">
-                <input type="submit" value="Add Post" class="uk-button uk-button-primary" />
+                <input type="submit" value="اضافة مقال" class="uk-button uk-button-primary" />
               </div>
             </div>
             <!-- End Submit Field -->
