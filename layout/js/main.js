@@ -1,6 +1,14 @@
 $(function () {
   'user strict';
 
+  $('#menu').slicknav({
+    'label':'القائمة الرئيسية',
+    'duplicate': true,
+    'easingOpen': 'swing',
+    'prependTo': '.down_nav',
+    'showChildren': false
+  });
+
   $(window).scroll(function() {
     if ($(this).scrollTop() > 0) {
       $('.down_nav').slideUp();
@@ -55,4 +63,24 @@ $(function () {
 		$(this).attr('placeholder', $(this).attr('data-text'));
 
 	});
+
+
+});
+
+$('.dropdown-toggle').click(function(e) {
+  if ($(document).width() > 768) {
+    e.preventDefault();
+
+    var url = $(this).attr('href');
+
+
+    if (url !== '#') {
+
+      window.location.href = url;
+    }
+
+  }
+
+
+
 });

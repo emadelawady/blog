@@ -17,7 +17,7 @@
       include 'init.php';
 
 			// get header
-			$hook_up->inc_header('light', '-');
+			$hook_up->inc_header();
       // users table
       $user_state = $con->prepare("SELECT * FROM users WHERE Username = ?");
       $user_state->execute(array($session_user));

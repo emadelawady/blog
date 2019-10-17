@@ -49,31 +49,25 @@ $hook_up->inc_header();
 				if(isset($session_user)) {
 
 				?>
-  <main class="uk-margin-remove uk-container">
-    <div class="uk-text-center uk-margin-auto" uk-grid>
-      <div class="uk-width-3-4">
-        <div class="uk-width-1-1 uk-margin-top">
-          <div class="uk-block">
+  <main class="container">
+    <div class="text-center row">
+
+      <div class="col-sm-12 col-md-9">
+
             <h1 class="post_title">
 								<?php echo $posts['Name']; ?>
 								</h1>
-          </div>
-					<div class="uk-block">
-						<h1 class="uk-margin-top uk-text-left">
 							<!-- <img class="post_img" src="admin/uploads/posts/<?php // echo $posts['Image']; ?>" alt=""> -->
 
-								<div class="post_img" style="background-image: url('admin/uploads/posts/<?php echo $posts['Image']; ?>');">
-									<div>
-								</h1>
-					</div>
-          <div class="uk-block">
-            <p class="post-content">
+								<div class="img-responsive img-thumbnail post_img" style="background-image: url('admin/uploads/posts/<?php echo $posts['Image']; ?>');">
+								</div>
+          <div class="">
+            <p class="post-content text-center">
               <?php	echo $posts['Description']; ?>
             </p>
           </div>
-        </div>
-				<div class="uk-width-1-1 uk-margin-top" uk-grid>
-					<div class="uk-width-1-2">
+				<div class="row">
+					<div class="col-sm-12 col-md-6">
 	          <p class="post_info">
 	            <?php
 								if ($posts['Status'] == 1) {
@@ -94,28 +88,29 @@ $hook_up->inc_header();
 
 	          </p>
 	        </div>
-					<div class="uk-width-1-2">
+					<div class="col-sm-12 col-md-6">
 						<p class="post_rating">
 							<?php echo 'تقييم : <span>' . $posts['Rating'] . ' <i class="fas fa-star" ></i></span>'; ?>
 						</p>
 					</div>
 				</div>
-				<div class="uk-width-1-1 tags">
+				<div class="col-sm-12 col-md-12 tags">
 					<?php
 					$post_tags = explode(',', $posts['tags']);
-					echo 'Tags :  ';
+					echo 'كلمات مميزة :  ';
 					foreach ($post_tags as $tag) {
 						$tag = str_replace(' ', '', $tag);
 						$tag = strtolower($tag);
-						echo '<a href="tags.php?tags='.$tag.'">' . $tag .'</a>' . ' / ';
+						echo '<a href="tags.php?tags='.$tag.'">' . $tag .'</a>' . ' - ';
 					}
 							 ?>
 				</div>
       </div>
-      <div class="uk-width-1-4">
+
+      <div class="col-sm-12 col-md-3">
         <?php include $templates . 'sidebar-post.php'; ?>
       </div>
-    </div>
+		</div>
     <?php include $templates . 'comments/comments.php' ?>
   </main>
   <!-- End Comments Section -->
@@ -123,7 +118,7 @@ $hook_up->inc_header();
 	$hook_up->inc_footer('main', '-');
 	}
 } else {
-  echo '<div class="uk-container">
+  echo '<div class="container">
     			<div class="nice-message">There\'s No Posts To Show</div>
   			</div>';
  }

@@ -24,6 +24,15 @@
     <img width="70%" src="user.jpg" alt="">
     <h4 class="uk-text-capitalize"><?php echo $user_info['Username']; ?> </h4>
   </div>
+  <!-- Start Password Field -->
+  <div class="uk-margin-small uk-width-1-1">
+    <div class="uk-block">
+      <label class="uk-label">Password</label>
+      <input type="hidden" name="oldpassword" value="<?php echo $row['Password'] ?>" />
+      <input type="password" name="newpassword" class="uk-input" value="<?php echo $row['Username'] ?>" autocomplete="off" required="required" autocomplete="new-password" placeholder="Leave Blank If You Dont Want To Change" />
+    </div>
+  </div>
+  <!-- End Password Field -->
   <!-- Right -->
   <div class="uk-text-center">
     <div class="uk-block">

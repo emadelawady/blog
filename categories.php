@@ -7,19 +7,15 @@ $pageTitle = 'أقسام - ' . $_GET['page_title'];
 $hook_up->inc_header();
 
 $page_id = isset($_GET['pageid']) ? $_GET['pageid'] : "";
- ?>
 
-<script type="text/javascript">
-
-</script>
-<?php // get posts
+ // get posts
   require_once 'pagination-class.php';
   $pagination =  new Pagination('posts');
   $posts = $pagination->get_data($page_id);
 ?>
-  <div class="cat_title" uk-grid>
-    <div class="uk-width-1-1">
-    <h1 class="uk-padding-small uk-text-right">
+  <div class="row cat_title">
+    <div class="col-sm-12">
+    <h1 class="text-right">
       <span>أقسام » </span>
 
     <?php if(!empty($_GET['page_title'])){ echo strtoupper(str_replace( '-', ' ',$_GET['page_title']));} else{
@@ -51,7 +47,8 @@ if ($page_id == $cat['ID'] ) {
   </div>
   </div>
   </div>
-  <div id="post_ajax" class="uk-container categories uk-margin-auto" uk-grid>
+  <div class="container">
+  <div id="post_ajax" class="row categories">
 
     <?php
 
@@ -60,38 +57,35 @@ if ($page_id == $cat['ID'] ) {
 
       foreach ($posts as $post) {
         ?>
-      <div class="uk-padding-small uk-width-1-1@s uk-width-1-3@m uk-width-1-3@l">
 
-        <div class="cat-posts uk-border-rounded uk-inline-clip uk-transition-toggle" style="background-image: url(<?php echo empty($post->Image) ? 'admin/uploads/posts/user.jpg' : 'admin/uploads/posts/' . $post->Image;?>)">
-          <div class="uk-overlay-primary uk-border-rounded">
-            <div class="uk-card-header uk-transition-scale-up">
-              <h3 class="post_title_cat uk-text-capitalize">
-                  <a id="<?php echo $post->Post_ID; ?>" href="posts.php?postid=<?php echo $post->Post_ID; ?>" class="checkActive">
-                  <?php echo excerpt_len($post->Name); ?>
-                </a>
-                  </h3>
+      <div class="col-sm-12 col-md-4 col-lg-4 hovereffect">
+
+          <span class="img-responsive img_span" style="background-image: url('<?php echo empty($post->Image) ? 'admin/uploads/posts/user.jpg' : 'admin/uploads/posts/' . $post->Image;?>')" alt="">
+          </span>
+          <div class="overlay">
+            <div class="post_title_cat">
+              <h2>
+                <a id="<?php echo $post->Post_ID; ?>" href="posts.php?postid=<?php echo $post->Post_ID; ?>" class="checkActive">
+                <?php echo excerpt_len($post->Name); ?>
+              </a>
+              </h2>
             </div>
-            <div class="uk-card-body uk-transition-slide-bottom">
+            <div class="">
                 <p>
                   <?php echo excerpt_len($post->Description,50, true); ?>
                 </p>
             </div>
-            <div class="uk-card-footer uk-margin-remove uk-transition-scale-down" uk-grid>
-              <div class="uk-width-1-2">
-                <a href="posts.php?postid=<?php echo $post->Post_ID; ?>" class="uk-label-success">Read more</a>
-                <a href="posts.php?postid=<?php echo $post->Post_ID; ?>" class="uk-label-success"><?php echo $post->cat_name; ?></a>
-
-              </div>
-              <div class="uk-width-1-2">
-                <p class="uk-margin-remove-top">
-                  <time datetime="2016-04-01T19:00">
-                    <?php echo $post->Add_Date ?>
-                  </time>
-                </p>
-              </div>
+            <div class="date">
+              <span class="">
+                <?php echo date("M Y", strtotime($post->Add_Date));?>
+              </span>
+            </div>
+            <div class="top_commented">
+              <span>
+                <?php echo $post->Rating . ' ' . "<i class='fas fa-star' style='font-size:11px !important;'></i>"; ?>
+              </span>
             </div>
           </div>
-        </div>
       </div>
       <?php
         }
@@ -100,9 +94,10 @@ if ($page_id == $cat['ID'] ) {
       } ?>
 
   </div>
+</div>
 <?php if (!empty($posts)) { ?>
-<div class="cat_pagi">
-  <ul class="uk-pagination">
+<div class="cat_pagi row">
+  <ul class="col-sm-12 col-md-12">
 <?php
     $pages  = $pagination->get_pagination_number($_GET['pageid']);
 

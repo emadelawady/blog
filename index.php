@@ -6,11 +6,9 @@ include 'init.php';
 global $current_page, $user_info;
 // get header
 $hook_up->inc_header(); ?>
-<div class="uk-container  uk-margin">
-  <div class="uk-text-center uk-margin uk-margin-auto" uk-grid>
-    <div class="uk-text-center uk-width-1-1 no_time">
-      <!-- <h1>بدون مناوشات , فقط مقالات حقيقية</h1> -->
-    </div>
+<div class="container">
+  <div class="row">
+
     <?php
     // arr to store homepage sections title
     $homepage_sec = array('top_rating', 'top_commented', 'latest_posts', 'random_posts');

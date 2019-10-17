@@ -1,11 +1,10 @@
 <?php // comment box
 
 // show comment SQL
-$stmt = $con->prepare("SELECT comments.*, users.Username
+$stmt = $con->prepare("SELECT comments.*, users.UserID, users.Username, users.avatar
 								FROM
 								 comments
-									INNER JOIN users
-								 ON
+									INNER JOIN users ON
 									comments.`user-id` = users.UserID
 									WHERE `post-id` = ?
 									AND status = 1
@@ -23,29 +22,37 @@ $comments = $stmt->fetchAll();
 if (!empty($comments)) { ?>
 <div class="hold_comment">
 <?php foreach ($comments as $comment) { ?>
-
-<ul class="uk-comment-list">
+<ul class="comment-list">
 	<li>
-			<article class="uk-comment uk-visible-toggle" tabindex="-1">
-					<header class="uk-comment-header uk-position-relative">
-							<div class="uk-grid-medium uk-flex-middle hold_comment_box" uk-grid>
-									<div class="uk-width-auto">
-											<img class="uk-comment-avatar" src="avatar.jpg" width="80" height="80" alt="">
+			<article class="comment visible-toggle" tabindex="-1">
+					<header class="comment-header position-relative">
+							<div class="row hold_comment_box">
+									<div class="col-sm-12 col-md-2 avatar_post">
+										<img class="comment-avatar" src="admin/uploads/avatars/<?php echo $comment['avatar']; ?>" width="100" style="height:100px;" alt="">
+										<h4 class="comment-title">
+											<a class="link-reset" href="#">
+												<?php echo $comment['Username']; ?>
+											</a>
+										</h4>
 									</div>
-									<div class="uk-width-expand">
-											<h4 class="uk-comment-title"><a class="uk-link-reset" href="#"><?php echo $comment['Username']; ?></a></h4>
-											<p class="uk-comment-meta uk-margin-remove-top">
-												<?php echo $comment['comment_date']; ?>
-											</p>
+									<div class="col-sm-12 col-md-10">
+										<p><?php echo $comment['comment']; ?></p>
 									</div>
 							</div>
-							<div class="uk-position-top-left uk-position-small uk-hidden-hover"><a class="uk-link-muted" href="#">اترك رد</a>
+							<div class="row comment_info">
+								<div class="col-sm-12 col-md-8 text-right comment-meta">
+									<span>
+										<?php echo $comment['comment_date']; ?>
+									</span>
+								</div>
+								<div class="col-sm-12 col-md-4 text-center link-muted">
+								<a href="#">اترك رد</a>
+							</div>
 							</div>
 					</header>
-					<div class="uk-comment-body">
-							<p><?php echo $comment['comment']; ?></p>
-					</div>
+
 			</article>
+
 	</li>
 </ul>
 <?php } ?>

@@ -108,54 +108,46 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $actual_link = "http://" .$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
 ?>
+<div class="container">
+<div class="row">
+    <div class="col-sm-12">
+      <form class="login row" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
+        <div class="col-sm-12 form-group">
+          <h1 class="text-center">مرحبا مجددا</h1>
+        </div>
+        <div class="col-sm-12 col-lg-6 form-group">
+          <input name="user" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" id="user" placeholder="اسم المستخدم"  autocomplete="off">
+        </div>
+        <div class="col-sm-12 col-lg-6 form-group">
+          <input name="pass" class="form-control" type="password" id="password" placeholder="كلمة المرور" autocomplete="new-password">
+        </div>
+        <div class="col-sm-12 form-group text-center">
 
-<div class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport>
-    <div class="uk-width-1-1">
-            <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
-                <div class="uk-width-1-1@m">
-                    <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-                        <h3 class="uk-card-title uk-text-center">مرحبا مجددا</h3>
-                        <form class="uk-form uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle uk-text-center login" method="POST" action="<?php $_SERVER['PHP_SELF'] ?>" uk-grid>
-                                <div class="uk-inline uk-width-1-1">
-                                    <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                                    <input name="user" class="uk-input uk-form-large" type="text"  id="user" placeholder="اسم المستخدم"  autocomplete="off">
-                                </div>
-                                <div class="uk-inline uk-width-1-1">
-                                    <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                                    <input name="pass" class="uk-input uk-form-large" type="password" id="password" placeholder="كلمة المرور" autocomplete="new-password">
-                            </div>
-                            <div class="uk-width-1-1">
-                                <input class="uk-button uk-button-primary" name="login" type="submit" id="submit" value="تسجيل دخول">
-                            </div>
-                            <div class="uk-width-1-1 uk-text-small uk-text-center">
-                                لست مسجلا بعد ؟ <a href="register.php">انضم الينا</a>
-                            </div>
-                        </form>
-                        <div class="uk-width-1-1 errors">
-                          <?php
-                          global $formErrors;
-                        //  print_r($formErrors);
+        <button id="submit" name="login" type="submit" class="btn" style="background: #673ab7;color:#fff;">تسجيل دخول</button>
+      </div>
+        <div class="form-group">
+          <?php
+          global $formErrors;
+        //  print_r($formErrors);
 
-                        if (is_array($formErrors) || is_object($formErrors))
-                        {
-                            foreach ($formErrors as $err)
-                            {
-                              echo $err . '<br>';
-                            }
-                        }
-                        if (isset($success)) { ?>
-                          <div class="uk-flex uk-flex-column uk-flex-center uk-flex-middle uk-height-viewport">
-                            <?php echo $success; ?>
-                         </div>
-                        <?php
-                        }
-                           ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        if (is_array($formErrors) || is_object($formErrors))
+        {
+            foreach ($formErrors as $err)
+            {
+              echo $err . '<br>';
+            }
+        }
+        if (isset($success)) { ?>
+          <div class="">
+            <?php echo $success; ?>
+         </div>
+        <?php
+        }
+           ?>
+        </div>
+      </form>
     </div>
 </div>
-
+</div>
 
 <?php include $templates . 'footer-main.php'; ?>
